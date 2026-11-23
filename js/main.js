@@ -1,4 +1,4 @@
-/* Kapsul — comportamento do site (jQuery) */
+/* Kapsul - comportamento do site (jQuery) */
 (function ($) {
   "use strict";
 

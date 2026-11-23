@@ -1,4 +1,4 @@
-# Kapsul — site institucional
+# Kapsul - site institucional
 
 Site estático (HTML + CSS + jQuery). Sem build: basta publicar a pasta.
 
