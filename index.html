@@ -1,333 +1,463 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
-    <title>Kapsul - Tapetes personalizados</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- ALL ICONS -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./img/fav/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./img/fav/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./img/fav/favicon-16x16.png"
-    />
-    <link rel="manifest" href="./img/fav/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="./img/icones/safari-pinned-tab.svg"
-      color="#009bc7"
-    />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="author" content="Matheus Henrique - Mhq" />
-
+    <title>Kapsul — Tapetes personalizados | Maringá – PR</title>
     <meta
       name="description"
-      content="A inovação em tapetes personalizados."
+      content="Tapetes personalizados pintados, vulcanizados e sanitizantes para empresas. Direto da fábrica, atacado e varejo, envio para o Brasil inteiro. Maringá – PR."
     />
-
-    <!-- For robots -->
+    <meta name="author" content="Kapsul" />
     <meta name="robots" content="index, follow" />
-
-    <!-- Unique link -->
+    <meta name="theme-color" content="#f3efe7" />
     <link rel="canonical" href="https://kapsul.com.br" />
 
-    <!-- /// All css ///-->
-    <link rel="stylesheet" href="./stylesheets/reset.css" />
-    <link rel="stylesheet" href="./stylesheets/btn-to-top.css" />
-    <link rel="stylesheet" href="./stylesheets/styles.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-      crossorigin="anonymous"
+    <!-- Compartilhamento -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Kapsul" />
+    <meta property="og:title" content="Kapsul — A inovação em tapetes personalizados" />
+    <meta
+      property="og:description"
+      content="Soluções corporativas, qualidade e segurança. Tapetes pintados, vulcanizados e sanitizantes."
     />
+    <meta property="og:url" content="https://kapsul.com.br" />
+    <meta property="og:image" content="https://kapsul.com.br/img/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="stylesheet" href="./plugins/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="./plugins/lightbox/css/lightbox.min.css" />
-    <link rel="stylesheet" href="./plugins/wow-animate/css/animate.min.css" />
+    <!-- Ícones -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png" />
+    <link rel="manifest" href="img/fav/site.webmanifest" />
+    <link rel="mask-icon" href="img/fav/safari-pinned-tab.svg" color="#1187b7" />
+
+    <!-- Fontes (hospedadas no próprio site) -->
+    <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin-opsz-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Kapsul",
+        "description": "Tapetes personalizados pintados, vulcanizados e sanitizantes.",
+        "url": "https://kapsul.com.br",
+        "image": "https://kapsul.com.br/img/og.jpg",
+        "email": "contato@kapsul.com.br",
+        "telephone": ["+5544997426691", "+5544999999915"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Maringá",
+          "addressRegion": "PR",
+          "addressCountry": "BR"
+        }
+      }
+    </script>
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                  <img src="./img/logo/logo.png" />
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Ícones (sprite) -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" /></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" /></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" /></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" /></symbol>
+      <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></symbol>
+      <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21V11l6 4v-4l6 4V4h6v17H3zM8 21v-3m4 3v-3m4 3v-3" /></symbol>
+      <symbol id="i-tag" viewBox="0 0 24 24"><path d="m20.6 13.4-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z" /><circle cx="7.5" cy="7.5" r="1.2" /></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M1.5 4h14v12h-14zM15.5 8h4l3 3.5V16h-7z" /><circle cx="6" cy="18.5" r="2" /><circle cx="18.5" cy="18.5" r="2" /></symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r=".6" fill="currentColor" /></symbol>
+      <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zM20.46 3.49A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42z" /></symbol>
+    </svg>
+
+    <!-- Cabeçalho -->
+    <header class="site-header" id="topo">
+      <div class="wrap header-in">
+        <a class="brand" href="#inicio" aria-label="Kapsul — ir para o início">
+          <img src="img/logo/logo-dark.png" alt="Kapsul — Tapetes personalizados" width="146" height="38" />
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+          <svg class="icon i-open" aria-hidden="true"><use href="#i-menu" /></svg>
+          <svg class="icon i-close" aria-hidden="true"><use href="#i-close" /></svg>
+        </button>
+
+        <nav class="nav" id="site-nav" aria-label="Principal">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="#inicio">Início</a></li>
+            <li><a class="nav-link" href="#sobre">Sobre</a></li>
+            <li class="has-sub">
+              <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-tapetes">
+                Tapetes
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron" /></svg>
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end">
-                  <li class="nav-item">
-                      <a class="nav-link menu-active" aria-current="page" href="#main-photo">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#about">Sobre</a>
-                  </li>
-                  <li class="nav-item dropdown li-dropdown">
-                    <a class="nav-link dropdown-toggle btn-carpets" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Tapetes
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#carpets-painted">Pintados</a></li>
-                      <li><a class="dropdown-item" href="#carpets-vulcanized">Vulcanizados</a></li>
-                      <li><a class="dropdown-item" href="#carpets-sanitized">Sanitizantes</a></li>
-                    </ul>
-                  </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contact-info">Contato</a>
-              </li>
+              <ul class="sub" id="sub-tapetes">
+                <li><a href="#pintados">Pintados</a></li>
+                <li><a href="#vulcanizados">Vulcanizados</a></li>
+                <li><a href="#sanitizantes">Sanitizantes</a></li>
               </ul>
-              </div>
-          </div>
+            </li>
+            <li><a class="nav-link" href="#contato">Contato</a></li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/5544997426691?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20kapsul.com.br" target="_blank" rel="noopener">Pedir orçamento</a>
         </nav>
+      </div>
     </header>
 
-    <!-- btn back to top -->
-    <span title="voltar ao topo" class="button-back-top d-none">
-      <i class="fa fa-chevron-up"></i>
-    </span>
-
-    <main>
-      <section id="main-photo" class="overflow-hidden">
-        <div class="main-bg">
-          <div class="main-container-info position-relative">
-              <h2 class="main-title wow  bounceInLeft">A inovação em tapetes personalizados</h2>
-              <p class="main-subtitle wow  bounceInRight">Soluções corporativas, qualidade e segurança</p>
-              <a class="btn-to-about wow fadeInDown infinite" data-wow-duration="1.5s" href="#about">
-                  <i class="fas fa-angle-double-down"></i>
+    <main id="conteudo">
+      <!-- Hero -->
+      <section class="hero" id="inicio" data-spy>
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Maringá – PR · Direto da fábrica</p>
+            <h1>A inovação em tapetes <em>personalizados</em></h1>
+            <p class="lead">Soluções corporativas, qualidade e segurança.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="https://wa.me/5544997426691?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20kapsul.com.br" target="_blank" rel="noopener">
+                <svg class="icon icon-fill" aria-hidden="true"><use href="#i-wa" /></svg>
+                Pedir orçamento
               </a>
-        </div>
-      </section>
+              <a class="btn btn-ghost btn-lg" href="#pintados">Ver modelos</a>
+            </div>
+          </div>
 
-      
-      <section id="general-info">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-4 general-info-item">
-              <div class="d-flex flex-column justify-content-center align-items-center">
-                <div class="general-info-icon">
-                  <i class="fas fa-truck-moving"></i>
-                </div>
-                <h3>Direto da Fábrica</h3>
-              </div>
+          <div class="board-wrap">
+            <div class="board" role="group" aria-label="Exemplos de tapetes vulcanizados com logotipos">
+              <figure class="swatch reveal" style="--d: 0.05s">
+                <img src="img/carpets/vulcanized/item-1.jpg" alt="Tapete vulcanizado preto com logotipo CAT" width="600" height="300" fetchpriority="high" />
+              </figure>
+              <figure class="swatch reveal" style="--d: 0.15s">
+                <img src="img/carpets/vulcanized/item-3.jpg" alt="Tapete vulcanizado preto com logotipo Honda" width="600" height="300" fetchpriority="high" />
+              </figure>
+              <figure class="swatch reveal" style="--d: 0.25s">
+                <img src="img/carpets/vulcanized/item-4.jpg" alt="Tapete vulcanizado azul com logotipo Yamaha" width="600" height="300" />
+              </figure>
+              <figure class="swatch reveal" style="--d: 0.35s">
+                <img src="img/carpets/vulcanized/item-5.jpg" alt="Tapete vulcanizado bege com logotipo FedEx" width="600" height="300" />
+              </figure>
             </div>
-
-            <div class="col-4 general-info-item">
-              <div class="d-flex flex-column justify-content-center align-items-center">
-                <div class="general-info-icon">
-                  <i class="fas fa-dollar-sign"></i>
-                </div>
-                <h3>Atacado e Varejo</h3>
-              </div>
-            </div>
-  
-            <div class="col-4 general-info-item">
-              <div class="d-flex flex-column justify-content-center align-items-center">
-                <div class="general-info-icon">
-                  <i class="fas fa-box-open"></i>
-                </div>
-                <h3>Envio para o Brasil inteiro</h3>
-              </div>
-            </div>
+            <p class="board-cap">
+              <b>Vulcanizado Gold</b>
+              <span>28 cores clássicas</span>
+              <span>Logotipo direto no vinil</span>
+            </p>
           </div>
         </div>
       </section>
 
-      <section id="about">
-        <div class="d-flex flex-wrap">
-            <div class="col-12 col-lg-6">
-                <div class="about-container-left">
-                    <div class="about-container-left-inside">
-                        <h2 class="about-title wow  fadeInLeft">Kapsul</h2>
-                        <p class="about-subtitle wow  fadeInLeft">Tapetes personalizados</p>
-                        <p class="about-text wow  fadeInLeft">
-                          Com soluções em tapetes personalizados, 
-                          temos opções coorporativas com qualidade 
-                          e segurança.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <img src="./img/about.jpg" class="img-fluid" />
-            </div>
+      <!-- Diferenciais -->
+      <section class="benefits" aria-label="Diferenciais">
+        <div class="wrap">
+          <ul>
+            <li class="reveal">
+              <svg class="icon" aria-hidden="true"><use href="#i-factory" /></svg>
+              <p>Direto da fábrica</p>
+            </li>
+            <li class="reveal" style="--d: 0.1s">
+              <svg class="icon" aria-hidden="true"><use href="#i-tag" /></svg>
+              <p>Atacado e varejo</p>
+            </li>
+            <li class="reveal" style="--d: 0.2s">
+              <svg class="icon" aria-hidden="true"><use href="#i-truck" /></svg>
+              <p>Envio para o Brasil inteiro</p>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section id="our-carpet">
-        <div class="our-carpet-bg" >
-        <div class="section-header wow zoomInLeft">
-          <h3 class="section-title">Nosso tapete é</h3>
-        </div>
-
-        <div class="container-fluid d-flex flex-wrap">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col-12 col-sm-4 wow fadeInLeft">
-              <div class="card">
-                <div class="card-container-img">
-                  <img src="./img/our-carpet/item-1.jpg" class="card-img-top" alt="Confortável para andar">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title text-center mb-0">Confortável <br/> para andar</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-4 wow fadeInUp">
-              <div class="card">
-                <div class="card-container-img">
-                  <img src="./img/our-carpet/item-2.jpg" class="card-img-top" alt="Facíl limpeza">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title text-center mb-0">De fácil <br /> limpeza</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-4 wow fadeInRight">
-              <div class="card">
-                <div class="card-container-img">
-                  <img src="./img/our-carpet/item-3.jpg" class="card-img-top" alt="Antiderrapante">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title text-center mb-0">Anti <br/> derrapante</h5>
-                </div>
-              </div>
-            </div>
+      <!-- Sobre -->
+      <section class="about" id="sobre" data-spy>
+        <div class="wrap about-grid">
+          <div class="reveal">
+            <p class="eyebrow">Sobre a Kapsul</p>
+            <h2 class="h-section">Tapetes personalizados</h2>
+            <p class="body">
+              Com soluções em tapetes personalizados, temos opções corporativas com qualidade e segurança.
+            </p>
+          </div>
+          <div class="about-photo reveal" style="--d: 0.1s">
+            <img src="img/about.jpg" alt="Pessoa segurando um celular que exibe o logotipo da Kapsul" width="960" height="689" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
 
-      <section id="budget">
-        <div class="container-fluid">
-          <p class="budget-title">Dúvidas? Orçamento?</p>
-          <p class="budget-subtitle">Mande sua mensagem</p>
+      <!-- Nosso tapete é -->
+      <section class="traits" aria-labelledby="traits-title">
+        <div class="wrap">
+          <div class="traits-head reveal">
+            <h2 class="h-section" id="traits-title">Nosso tapete é</h2>
+          </div>
+          <div class="traits-grid">
+            <article class="trait reveal">
+              <figure>
+                <img src="img/our-carpet/item-1.jpg" alt="Tapete bege com desenho de uma casa sorrindo e a frase casa feliz" width="720" height="672" loading="lazy" decoding="async" />
+              </figure>
+              <h3>Confortável para andar</h3>
+            </article>
+            <article class="trait reveal" style="--d: 0.1s">
+              <figure>
+                <img src="img/our-carpet/item-2.jpg" alt="Tapete cinza e vermelho diante de uma porta de madeira" width="720" height="672" loading="lazy" decoding="async" />
+              </figure>
+              <h3>De fácil limpeza</h3>
+            </article>
+            <article class="trait reveal" style="--d: 0.2s">
+              <figure>
+                <img src="img/our-carpet/item-3.jpg" alt="Tapete bege com a frase I love pet e patinhas, sobre piso cinza" width="720" height="672" loading="lazy" decoding="async" />
+              </figure>
+              <h3>Antiderrapante</h3>
+            </article>
+          </div>
+        </div>
+      </section>
 
-          <div class="wow pulse infinite">
-            <a class="btn-primary-custom btn-whats" target="_blank" href="https://bit.ly/3cxAJsl">
-              <i class="fab fa-whatsapp me-2"></i>
+      <!-- Orçamento -->
+      <section class="quote" aria-labelledby="quote-title">
+        <div class="wrap quote-in">
+          <div class="reveal">
+            <p class="eyebrow">Orçamento</p>
+            <h2 id="quote-title">Dúvidas? Orçamento? <span>Mande sua mensagem.</span></h2>
+          </div>
+          <div class="reveal" style="--d: 0.1s">
+            <a class="btn btn-wa btn-lg" href="https://wa.me/5544997426691?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20kapsul.com.br" target="_blank" rel="noopener">
+              <svg class="icon icon-fill" aria-hidden="true"><use href="#i-wa" /></svg>
               Entrar em contato
             </a>
           </div>
         </div>
       </section>
 
-      <section id="carpets-painted" class="pt-5">
-        <div class="mx-3">
-          <div class="section-header wow zoomInLeft">
-            <h3 class="section-title">Pintados</h3>
-            <p class="section-subtitle">Para quem busca tapetes personalizados pintados, rico em detalhes, o Pintado Gold da Kapsul é perfeito, principalmente para reprodução de logotipos detalhados de empresas.</p>
+      <!-- Pintados -->
+      <section class="catalog" id="pintados" data-spy aria-labelledby="t-pintados">
+        <div class="wrap">
+          <div class="cat-head reveal">
+            <div class="cat-title">
+              <h2 class="h-section" id="t-pintados">Pintados</h2>
+            </div>
+            <p>
+              Para quem busca tapetes personalizados pintados, ricos em detalhes, o <strong>Pintado Gold</strong> da Kapsul é perfeito, principalmente para a reprodução de logotipos detalhados de empresas.
+            </p>
           </div>
-          <div class="row container-carpets-painted">
-          </div>
+          <ul class="masonry">
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-1.jpg" data-group="pintados" data-caption="Tapete pintado preto com a palavra Bem-vindo e um personagem de desenho animado">
+                <img src="img/carpets/painted/item-1.jpg" alt="Tapete pintado preto com a palavra Bem-vindo e um personagem de desenho animado" width="720" height="698" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-2.jpg" data-group="pintados" data-caption="Tapete pintado verde em formato de campo de futebol">
+                <img src="img/carpets/painted/item-2.jpg" alt="Tapete pintado verde em formato de campo de futebol" width="720" height="581" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-3.jpg" data-group="pintados" data-caption="Tapete pintado mostarda com a palavra Churrasqueira e talheres de churrasco">
+                <img src="img/carpets/painted/item-3.jpg" alt="Tapete pintado mostarda com a palavra Churrasqueira e talheres de churrasco" width="720" height="581" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-5.jpg" data-group="pintados" data-caption="Tapete pintado marrom com copos de cerveja e a frase Se trouxe cerveja, entre sem bater">
+                <img src="img/carpets/painted/item-5.jpg" alt="Tapete pintado marrom com copos de cerveja e a frase Se trouxe cerveja, entre sem bater" width="720" height="703" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-4.jpg" data-group="pintados" data-caption="Tapete pintado com ícone de envelope sobre piso de madeira">
+                <img src="img/carpets/painted/item-4.jpg" alt="Tapete pintado com ícone de envelope sobre piso de madeira" width="717" height="581" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-9.jpg" data-group="pintados" data-caption="Tapete pintado azul com logotipo de posto de combustível">
+                <img src="img/carpets/painted/item-9.jpg" alt="Tapete pintado azul com logotipo de posto de combustível" width="1280" height="735" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-7.jpg" data-group="pintados" data-caption="Tapete pintado laranja com a frase be happy escrita à mão">
+                <img src="img/carpets/painted/item-7.jpg" alt="Tapete pintado laranja com a frase be happy escrita à mão" width="720" height="700" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-6.jpg" data-group="pintados" data-caption="Tapete pintado preto com a frase A vida é muito curta para tomar cerveja ruim">
+                <img src="img/carpets/painted/item-6.jpg" alt="Tapete pintado preto com a frase A vida é muito curta para tomar cerveja ruim" width="720" height="703" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/painted/item-8.jpg" data-group="pintados" data-caption="Tapete pintado bege com a palavra Family e borda escura">
+                <img src="img/carpets/painted/item-8.jpg" alt="Tapete pintado bege com a palavra Family e borda escura" width="1032" height="581" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
-      
-      <section id="carpets-vulcanized" class="pt-md-5">
-        <div class="mx-3">
-          <div class="section-header wow zoomInLeft">
-            <h3 class="section-title">Vulcanizados</h3>
-            <p class="section-subtitle">Os tapetes personalizados vulcanizados Gold da Kapsul são ótimos para diferentes ambientes da sua empresa. Essa tecnologia utiliza um processo exclusivo de personalização, que permite a utilização de 28 cores clássicas para a criação do logotipo da empresa no tapete, feita diretamente no vinil.</p>
+      <!-- Vulcanizados -->
+      <section class="catalog alt" id="vulcanizados" data-spy aria-labelledby="t-vulcanizados">
+        <div class="wrap">
+          <div class="cat-head reveal">
+            <div class="cat-title">
+              <h2 class="h-section" id="t-vulcanizados">Vulcanizados</h2>
+            </div>
+            <p>
+              Os tapetes personalizados vulcanizados <strong>Gold</strong> da Kapsul são ótimos para diferentes ambientes da sua empresa. Essa tecnologia utiliza um processo exclusivo de personalização, que permite a utilização de 28 cores clássicas para a criação do logotipo da empresa no tapete, feita diretamente no vinil.
+            </p>
           </div>
-          <div class="row container-carpets-vulcanized">
-          </div>
+          <ul class="gallery-grid">
+            <li class="reveal">
+              <a class="tile cutout" href="img/carpets/vulcanized/item-1.jpg" data-group="vulcanizados" data-caption="Tapete vulcanizado preto com logotipo CAT">
+                <img src="img/carpets/vulcanized/item-1.jpg" alt="Tapete vulcanizado preto com logotipo CAT" width="600" height="300" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile cutout" href="img/carpets/vulcanized/item-3.jpg" data-group="vulcanizados" data-caption="Tapete vulcanizado preto com logotipo Honda">
+                <img src="img/carpets/vulcanized/item-3.jpg" alt="Tapete vulcanizado preto com logotipo Honda" width="600" height="300" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile cutout" href="img/carpets/vulcanized/item-5.jpg" data-group="vulcanizados" data-caption="Tapete vulcanizado bege com logotipo FedEx">
+                <img src="img/carpets/vulcanized/item-5.jpg" alt="Tapete vulcanizado bege com logotipo FedEx" width="600" height="300" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/vulcanized/item-2.jpg" data-group="vulcanizados" data-caption="Tapete vulcanizado verde com logotipo de uma rádio FM em cores vivas">
+                <img src="img/carpets/vulcanized/item-2.jpg" alt="Tapete vulcanizado verde com logotipo de uma rádio FM em cores vivas" width="600" height="460" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile cutout" href="img/carpets/vulcanized/item-4.jpg" data-group="vulcanizados" data-caption="Tapete vulcanizado azul com logotipo Yamaha">
+                <img src="img/carpets/vulcanized/item-4.jpg" alt="Tapete vulcanizado azul com logotipo Yamaha" width="600" height="300" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section id="carpets-sanitized" class="pt-md-5">
-        <div class="mx-3">
-          <div class="section-header wow zoomInLeft">
-            <h3 class="section-title">Sanitizantes</h3>
+      <!-- Sanitizantes -->
+      <section class="catalog" id="sanitizantes" data-spy aria-labelledby="t-sanitizantes">
+        <div class="wrap">
+          <div class="cat-head reveal">
+            <div class="cat-title">
+              <h2 class="h-section" id="t-sanitizantes">Sanitizantes</h2>
+            </div>
+            <p>Para a entrada de ambientes que pedem cuidado com a higienização dos calçados.</p>
           </div>
-          <p class="section-subtitle"></p>
-          <div class="row container-carpets-sanitized">
-          </div>
+          <ul class="masonry">
+            <li class="reveal">
+              <a class="tile cutout" href="img/carpets/sanitized/item-6.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante preto de borda fina sobre fundo branco">
+                <img src="img/carpets/sanitized/item-6.jpg" alt="Tapete sanitizante preto de borda fina sobre fundo branco" width="440" height="440" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/sanitized/item-1.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante vermelho">
+                <img src="img/carpets/sanitized/item-1.jpg" alt="Tapete sanitizante vermelho" width="1280" height="1009" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile cutout" href="img/carpets/sanitized/item-7.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante cinza com a frase Descontamine seus calçados e pegadas">
+                <img src="img/carpets/sanitized/item-7.jpg" alt="Tapete sanitizante cinza com a frase Descontamine seus calçados e pegadas" width="350" height="350" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/sanitized/item-2.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante preto">
+                <img src="img/carpets/sanitized/item-2.jpg" alt="Tapete sanitizante preto" width="1280" height="991" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/sanitized/item-3.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante cinza">
+                <img src="img/carpets/sanitized/item-3.jpg" alt="Tapete sanitizante cinza" width="1280" height="837" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/sanitized/item-4.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante azul">
+                <img src="img/carpets/sanitized/item-4.jpg" alt="Tapete sanitizante azul" width="1280" height="688" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+            <li class="reveal">
+              <a class="tile" href="img/carpets/sanitized/item-5.jpg" data-group="sanitizantes" data-caption="Tapete sanitizante bege">
+                <img src="img/carpets/sanitized/item-5.jpg" alt="Tapete sanitizante bege" width="1280" height="912" loading="lazy" decoding="async" />
+                <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#i-zoom" /></svg></span>
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section id="contact-info">
-        <div class="container-fluid">
-          <div class="row">
-              <div class="col-12 col-sm-4 mb-5 mb-sm-0 wow fadeInUp">
-                <div class="contact-info-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <p>Maringá - PR</p>
-                </div>
-              </div>
-
-              <div class="col-12 col-sm-4 mb-5 mb-sm-0 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="contact-info-item">
-                  <i class="fas fa-phone"></i>
-                  <div>
-                    <a class="d-block" target="_blank" href="https://bit.ly/3cxAJsl">
-                      (44) 99742-6691
-                    </a>
-                    <a class="d-block"target="_blank" href="https://bit.ly/3cCaFfK">
-                      (44) 99999-9915
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-sm-4 wow fadeInUp" data-wow-delay=".6s">
-                <div class="contact-info-item">
-                  <i class="fas fa-envelope"></i>
-                  <p>contato@kapsul.com.br</p>
-                </div>
-              </div>
-          </div>
+      <!-- Contato -->
+      <section class="contact" id="contato" data-spy aria-labelledby="t-contato">
+        <div class="wrap">
+          <p class="eyebrow reveal">Contato</p>
+          <h2 class="h-section reveal" id="t-contato">Fale com a Kapsul</h2>
+          <dl class="contact-grid">
+            <div class="contact-item reveal">
+              <dt>Onde estamos</dt>
+              <dd>Maringá – PR</dd>
+            </div>
+            <div class="contact-item reveal" style="--d: 0.1s">
+              <dt>WhatsApp</dt>
+              <dd>
+                <a href="https://wa.me/5544997426691?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20kapsul.com.br" target="_blank" rel="noopener">(44) 99742-6691</a>
+                <a href="https://wa.me/5544999999915?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%20kapsul.com.br" target="_blank" rel="noopener">(44) 99999-9915</a>
+              </dd>
+            </div>
+            <div class="contact-item reveal" style="--d: 0.2s">
+              <dt>E-mail</dt>
+              <dd><a href="mailto:contato@kapsul.com.br">contato@kapsul.com.br</a></dd>
+            </div>
+          </dl>
         </div>
       </section>
     </main>
 
-    <footer>
-      <div class="container-fluid">
-        <div class="d-flex justify-content-between">
-          <p class="mb-0 copyright">© <span class="year"></span> Kapsul - Todos os direitos reservados</p>
-          <div class="d-flex container-social-media">
-            <a class="me-2" target="_blank" href="https://www.facebook.com/Kapsul-Tapetes-Personalizados-352119554818589">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a target="_blank" href="https://www.instagram.com/kapsultapetespersonalizados/">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-      </div>
+    <footer class="site-footer">
+      <div class="wrap footer-in">
+        <a class="brand" href="#inicio" aria-label="Kapsul — voltar ao início">
+          <img src="img/logo/logo-light.png" alt="Kapsul" width="131" height="34" />
+        </a>
+        <p>© <span class="js-year">2026</span> Kapsul — Todos os direitos reservados</p>
+        <div class="social">
+          <a href="https://www.facebook.com/Kapsul-Tapetes-Personalizados-352119554818589" target="_blank" rel="noopener" aria-label="Kapsul no Facebook">
+            <svg class="icon" aria-hidden="true"><use href="#i-fb" /></svg>
+          </a>
+          <a href="https://www.instagram.com/kapsultapetespersonalizados/" target="_blank" rel="noopener" aria-label="Kapsul no Instagram">
+            <svg class="icon" aria-hidden="true"><use href="#i-ig" /></svg>
+          </a>
+        </div>
       </div>
     </footer>
 
-    <!-- All js -->
-    <script
-      type="text/javascript"
-      src="./plugins/jquery/jquery-3.3.1.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./plugins/bootstrap/bootstrap.bundle.min.js"
-    ></script>
-    <script type="text/javascript" src="./js/all.js"></script>
-    <script
-      type="text/javascript"
-      src="./plugins/lightbox/js/lightbox.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./plugins/wow-animate/js/wow.min.js"
-    ></script>
+    <a class="to-top" href="#inicio" aria-label="Voltar ao topo">
+      <svg class="icon" aria-hidden="true"><use href="#i-up" /></svg>
+    </a>
+
+    <script src="vendor/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
