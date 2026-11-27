@@ -1,252 +1,184 @@
-/* Kapsul - comportamento do site (jQuery) */
-(function ($) {
+/* Kapsul - comportamento do site (JavaScript puro, sem dependências) */
+(function () {
   "use strict";
 
-  $(function () {
-    var $win = $(window);
-    var $html = $("html");
-    var $header = $(".site-header");
-    var $toggle = $(".nav-toggle");
-    var $toTop = $(".to-top");
-    var mqMobile = window.matchMedia("(max-width: 900px)");
+  var html = document.documentElement;
+  var header = document.querySelector(".site-header");
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("site-nav");
+  var toTop = document.querySelector(".to-top");
+  var mqNav = window.matchMedia("(max-width: 1024px)");
 
-    $(".js-year").text(new Date().getFullYear());
+  /* ---------- Menu mobile ---------- */
+  function setMenu(open) {
+    header.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    html.classList.toggle("no-scroll", open && mqNav.matches);
+  }
 
-    /* ---------- Menu mobile ---------- */
-    function setMenu(open) {
-      $header.toggleClass("menu-open", open);
-      $toggle
-        .attr("aria-expanded", open)
-        .attr("aria-label", open ? "Fechar menu" : "Abrir menu");
-      $html.toggleClass("no-scroll", open && mqMobile.matches);
-    }
+  toggle.addEventListener("click", function () {
+    setMenu(!header.classList.contains("menu-open"));
+  });
 
-    $toggle.on("click", function () {
-      setMenu(!$header.hasClass("menu-open"));
-    });
+  // clicar em um link do menu fecha o painel
+  nav.addEventListener("click", function (e) {
+    if (e.target.closest("a")) setMenu(false);
+  });
 
-    // links do menu fecham o painel (no mobile) e o submenu (no desktop)
-    $("#site-nav").on("click", "a", function () {
+  // Esc fecha o menu e devolve o foco ao botão
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && header.classList.contains("menu-open")) {
       setMenu(false);
-      closeSub();
-    });
-
-    // se a janela cresce com o menu aberto, volta ao estado normal
-    $win.on("resize", function () {
-      if (!mqMobile.matches) setMenu(false);
-    });
-
-    /* ---------- Submenu "Tapetes" (desktop) ---------- */
-    var $sub = $(".has-sub");
-    var $subBtn = $sub.children("button");
-
-    function openSub() {
-      $sub.addClass("open");
-      $subBtn.attr("aria-expanded", true);
+      toggle.focus();
     }
-    function closeSub() {
-      $sub.removeClass("open");
-      $subBtn.attr("aria-expanded", false);
-    }
+  });
 
-    $subBtn.on("click", function () {
-      if (mqMobile.matches) return; // no mobile a lista já fica aberta
-      $sub.hasClass("open") ? closeSub() : openSub();
-    });
+  // se a tela cresce com o menu aberto, volta ao estado normal
+  function onBreakpoint(e) {
+    if (!e.matches) setMenu(false);
+  }
+  if (mqNav.addEventListener) mqNav.addEventListener("change", onBreakpoint);
+  else mqNav.addListener(onBreakpoint);
 
-    // abre ao passar o mouse (apenas ponteiros com hover)
-    if (window.matchMedia("(hover: hover)").matches) {
-      $sub.on("mouseenter", function () {
-        if (!mqMobile.matches) openSub();
-      });
-      $sub.on("mouseleave", closeSub);
-    }
-
-    // fecha ao clicar fora, com Esc, ou quando o foco sai do submenu
-    $(document).on("click", function (e) {
-      if (!$(e.target).closest(".has-sub").length) closeSub();
-    });
-    $sub.on("focusout", function (e) {
-      if (!$.contains(this, e.relatedTarget)) closeSub();
-    });
-    $(document).on("keydown", function (e) {
-      if (e.key !== "Escape") return;
-      if ($sub.hasClass("open")) {
-        closeSub();
-        $subBtn.trigger("focus");
-      }
-      if ($header.hasClass("menu-open")) {
-        setMenu(false);
-        $toggle.trigger("focus");
-      }
-    });
-
-    /* ---------- Cabeçalho, voltar ao topo e seção ativa ---------- */
-    var $sections = $("[data-spy]");
-    var $links = $("#site-nav a[href^='#']");
-    var $parentLink = $subBtn;
-    var ticking = false;
-
-    function update() {
-      ticking = false;
-      var y = $win.scrollTop();
-      var headerH = $header.outerHeight();
-
-      $header.toggleClass("is-stuck", y > 8);
-      $toTop.toggleClass("show", y > 700);
-
-      // seção atual = a última cujo topo já passou da linha do cabeçalho
-      var line = y + headerH + Math.min(160, $win.height() * 0.25);
-      var current = $sections.first().attr("id");
-      $sections.each(function () {
-        if ($(this).offset().top <= line) current = this.id;
-      });
-      // no fim da página, o último item é o ativo
-      if (y + $win.height() >= $(document).height() - 4) {
-        current = $sections.last().attr("id");
-      }
-
-      $links.removeClass("is-active").removeAttr("aria-current");
-      $links.filter("[href='#" + current + "']").addClass("is-active").attr("aria-current", "true");
-      $parentLink.toggleClass("is-active", /^(pintados|vulcanizados|sanitizantes)$/.test(current));
-    }
-
-    $win.on("scroll resize", function () {
+  /* ---------- Botão voltar ao topo ---------- */
+  var ticking = false;
+  function updateTop() {
+    ticking = false;
+    if (toTop) toTop.classList.toggle("show", window.scrollY > 700);
+  }
+  window.addEventListener(
+    "scroll",
+    function () {
       if (!ticking) {
         ticking = true;
-        window.requestAnimationFrame(update);
+        window.requestAnimationFrame(updateTop);
+      }
+    },
+    { passive: true }
+  );
+  updateTop();
+
+  /* ---------- Entrada suave dos elementos ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    reveals.forEach(function (el) {
+      io.observe(el);
+    });
+  } else {
+    reveals.forEach(function (el) {
+      el.classList.add("in");
+    });
+  }
+
+  var counters = document.querySelectorAll(".stat-num[data-to]");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function formatCount(el, value) {
+    el.textContent =
+      (el.getAttribute("data-prefix") || "") +
+      value.toLocaleString("pt-BR") +
+      (el.getAttribute("data-suffix") || "");
+  }
+
+  function runCounter(el) {
+    var to = Number(el.getAttribute("data-to"));
+    var duration = 1600;
+    var start = null;
+    function frame(now) {
+      if (start === null) start = now;
+      var p = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      formatCount(el, Math.round(to * eased));
+      if (p < 1) window.requestAnimationFrame(frame);
+    }
+    window.requestAnimationFrame(frame);
+  }
+
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
+    var counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    counters.forEach(function (el) {
+      formatCount(el, 0);
+      counterObserver.observe(el);
+    });
+  }
+
+  var media = document.querySelector(".product-media");
+  var mediaImg = media && media.querySelector("img");
+  if (mediaImg) {
+    var lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("aria-label", "Imagem ampliada");
+    lightbox.hidden = true;
+
+    var full = document.createElement("img");
+    full.alt = mediaImg.alt;
+
+    var close = document.createElement("button");
+    close.type = "button";
+    close.className = "lightbox-close";
+    close.setAttribute("aria-label", "Fechar imagem");
+    close.innerHTML = "&times;";
+
+    lightbox.appendChild(full);
+    lightbox.appendChild(close);
+    document.body.appendChild(lightbox);
+
+    media.setAttribute("role", "button");
+    media.setAttribute("tabindex", "0");
+    media.setAttribute("aria-label", "Ampliar imagem: " + mediaImg.alt);
+
+    var openLightbox = function () {
+      full.src = mediaImg.currentSrc || mediaImg.src;
+      lightbox.hidden = false;
+      html.classList.add("no-scroll");
+      close.focus();
+    };
+    var closeLightbox = function () {
+      lightbox.hidden = true;
+      html.classList.remove("no-scroll");
+      media.focus();
+    };
+
+    media.addEventListener("click", openLightbox);
+    media.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLightbox();
       }
     });
-    update();
-
-    /* ---------- Entrada suave dos elementos ---------- */
-    var $reveal = $(".reveal");
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              $(entry.target).addClass("in");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
-      );
-      $reveal.each(function () {
-        io.observe(this);
-      });
-    } else {
-      $reveal.addClass("in");
-    }
-
-    /* ---------- Lightbox ---------- */
-    var $lb = $(
-      '<div class="lb" role="dialog" aria-modal="true" aria-label="Galeria de tapetes" aria-hidden="true">' +
-        '<button type="button" class="lb-btn lb-close" aria-label="Fechar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>' +
-        '<button type="button" class="lb-btn lb-prev" aria-label="Foto anterior"><svg class="icon" aria-hidden="true"><use href="#i-left"/></svg></button>' +
-        '<figure class="lb-stage"><img alt="" /><figcaption><span class="lb-cap"></span><span class="lb-count"></span></figcaption></figure>' +
-        '<button type="button" class="lb-btn lb-next" aria-label="Próxima foto"><svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button>' +
-        "</div>"
-    ).appendTo("body");
-
-    var $img = $lb.find(".lb-stage img");
-    var $cap = $lb.find(".lb-cap");
-    var $count = $lb.find(".lb-count");
-    var $focusBack = null;
-    var items = [];
-    var index = 0;
-
-    function show(i) {
-      index = (i + items.length) % items.length;
-      var $t = items.eq(index);
-      var src = $t.attr("href");
-      var caption = $t.data("caption");
-
-      $img.addClass("loading");
-      var probe = new Image();
-      probe.onload = function () {
-        if (items.eq(index).attr("href") !== src) return; // usuário já avançou
-        $img.attr({ src: src, alt: caption }).removeClass("loading");
-      };
-      probe.src = src;
-
-      $cap.text(caption);
-      $count.text(index + 1 + " / " + items.length);
-
-      // pré-carrega vizinhas
-      [index + 1, index - 1].forEach(function (n) {
-        var p = new Image();
-        p.src = items.eq((n + items.length) % items.length).attr("href");
-      });
-    }
-
-    function open($tile) {
-      items = $('.tile[data-group="' + $tile.data("group") + '"]');
-      $focusBack = $tile;
-      $lb.addClass("open").attr("aria-hidden", "false");
-      $html.addClass("no-scroll");
-      show(items.index($tile));
-      // espera a galeria ficar visível; foco em elemento invisível é ignorado
-      setTimeout(function () {
-        $lb.find(".lb-close").trigger("focus");
-      }, 40);
-    }
-
-    function close() {
-      $lb.removeClass("open").attr("aria-hidden", "true");
-      $html.removeClass("no-scroll");
-      if ($focusBack) $focusBack.trigger("focus");
-    }
-
-    $(".tile").on("click", function (e) {
-      // ctrl/cmd/botão do meio mantêm o comportamento padrão (abrir a imagem)
-      if (e.ctrlKey || e.metaKey || e.shiftKey || e.which === 2) return;
-      e.preventDefault();
-      open($(this));
+    lightbox.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
     });
+  }
 
-    $lb.on("click", function (e) {
-      if ($(e.target).is(".lb, .lb-stage")) close();
-    });
-    $lb.find(".lb-close").on("click", close);
-    $lb.find(".lb-prev").on("click", function () {
-      show(index - 1);
-    });
-    $lb.find(".lb-next").on("click", function () {
-      show(index + 1);
-    });
-
-    $(document).on("keydown", function (e) {
-      if (!$lb.hasClass("open")) return;
-      if (e.key === "Escape") close();
-      else if (e.key === "ArrowLeft") show(index - 1);
-      else if (e.key === "ArrowRight") show(index + 1);
-      else if (e.key === "Tab") {
-        // mantém o foco dentro da galeria
-        var $f = $lb.find("button");
-        var first = $f.first()[0];
-        var last = $f.last()[0];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    });
-
-    // arrastar para o lado no celular
-    var startX = null;
-    $lb.on("touchstart", function (e) {
-      startX = e.originalEvent.touches[0].clientX;
-    });
-    $lb.on("touchend", function (e) {
-      if (startX === null) return;
-      var dx = e.originalEvent.changedTouches[0].clientX - startX;
-      startX = null;
-      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
-    });
+  /* ---------- Ano do rodapé ---------- */
+  var year = String(new Date().getFullYear());
+  document.querySelectorAll(".js-year").forEach(function (el) {
+    el.textContent = year;
   });
-})(jQuery);
+})();
